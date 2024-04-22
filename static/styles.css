@@ -1,0 +1,87 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f1f9;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+}
+
+h1, h2 {
+    color: #6a5acd;
+    text-align: center;
+}
+
+div.paste-box {
+    border: 2px dashed #6a5acd;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: box-shadow 0.3s;
+    max-width: 1000px;
+}
+
+p {
+    background-color: #e6e6fa;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+}
+
+p#original_text, p#translated_text {
+    min-height: 50px;  /* Ensures the box is visible even if empty */
+}
+
+/* Accessibility and visual improvements */
+:focus {
+    outline: 3px solid #5a4fcf;
+    outline-offset: 2px;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader:after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border: 8px solid #ccc;
+    border-top-color: #6a5acd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.text-box {
+    width: 80%; /* Controlling width */
+    margin: auto; /* Centering */
+    max-width: 600px; /* Max width */
+    font-size: 20px;
+}
+
+
+
+.paste-box:hover{
+    box-shadow: 0 0 10px #6a5acd;
+}
+
+.image-preview {
+    max-width: 100%; /* Limit image width to the container size */
+    margin-top: 20px; /* Space between text and image */
+    border-radius: 5px; /* Optional: rounds the corners of the image */
+}

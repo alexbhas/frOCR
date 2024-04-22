@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FR > EN OCR</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            
+            // Handling paste event
+            $(document).on('paste', function(e) {
+                var items = (e.clipboardData || e.originalEvent.clipboardData).items;
+                for (var index in items) {
+                    var item = items[index];
+                    if (item.kind === 'file') {
+                        var blob = item.getAsFile();
+                        var reader = new FileReader();
+                        reader.onload = function(event) {
+                            // Show loader
+                            $('.loader').show();
+                            // Display image preview
+                            $('#image-preview').attr('src', event.target.result).show();
+        
+                            // Send the image data to the server
+                            $.post('/upload', {image: event.target.result}, function(data) {
+                                $('#original_text').text(data.original_text);
+                                $('#translated_text').text(data.translated_text);
+                                $('.loader').hide(); // Hide loader after processing
+                            }, 'json').fail(function() {
+                                $('.loader').hide(); // Ensure loader hides on fail
+                                alert('Failed to process image.');
+                                $('#image-preview').hide(); // Hide image preview on fail
+                            });
+                        };
+                        reader.readAsDataURL(blob);
+                    }
+                }
+            });
+        });
+        </script>             
+</head>
+<body>
+    <h1>FR > EN OCR</h1>
+    <div class="paste-box"> <!-- Make div focusable by adding tabindex -->
+        <p>Press Ctrl+V to paste an image</p>
+        <img id="image-preview" src="#" alt="Image Preview" class="image-preview" style="display: none;">
+    </div>    
+    <div class="loader" style="display: none;"></div> <!-- Loader, hidden initially -->
+    
+    <div class="text-box">
+        <h2>Translated Text:</h2>
+        <p id="translated_text"></p>
+    </div>
+    <div class="text-box">
+        <h2>Original Text:</h2>
+        <p id="original_text"></p>
+    </div>
+    
+</body>
+
+</html>
