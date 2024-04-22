@@ -32,7 +32,7 @@ def translate_text(text):
     print("TEXT: ", text);
     url = "https://api-free.deepl.com/v2/translate"
     params = {
-        'auth_key': os.getenv('DEEPL_API_KEY'),  # Replace with your actual DeepL API key
+        'auth_key': os.getenv('DEEPL_API_KEY'),
         'text': text,
         'target_lang': 'EN'
     }
@@ -43,7 +43,6 @@ def translate_text(text):
 
 @app.route('/static/<path:path>')
 def send_js(path):
-    # Send static files from the 'static' directory
     return send_from_directory('static', path)
 
 if __name__ == '__main__':

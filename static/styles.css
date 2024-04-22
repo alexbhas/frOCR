@@ -30,10 +30,9 @@ p {
 }
 
 p#original_text, p#translated_text {
-    min-height: 50px;  /* Ensures the box is visible even if empty */
+    min-height: 50px; 
 }
 
-/* Accessibility and visual improvements */
 :focus {
     outline: 3px solid #5a4fcf;
     outline-offset: 2px;
@@ -73,8 +72,6 @@ p#original_text, p#translated_text {
     max-width: 600px; /* Max width */
     font-size: 20px;
 }
-
-
 
 .paste-box:hover{
     box-shadow: 0 0 10px #6a5acd;
