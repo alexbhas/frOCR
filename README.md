@@ -8,6 +8,8 @@ It was made because as I am learning french, I wanted to play video games in fre
 
 ## Installation
 
+Have a .env setup with your API key as DEEPL_API_KEY
+
 ```bash
 git clone https://github.com/alexbhas/frOCR
 cd frOCR
