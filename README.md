@@ -6,6 +6,8 @@ This project is a Flask application that extracts text from images and translate
 
 It was made because as I am learning french, I wanted to play video games in french and having a tool I can easily paste screenshots to into to translate helps a lot.
 
+The language is easily interchangable by changing the language that the DeepL api expects to translate to/from, and the language Tesseract expects to read.
+
 ## Installation
 
 Have a .env setup with your API key as DEEPL_API_KEY
